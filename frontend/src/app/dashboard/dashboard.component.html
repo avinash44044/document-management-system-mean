@@ -1,0 +1,138 @@
+<div class="dashboard-wrapper">
+
+  <div class="dashboard-container">
+
+    <!-- HEADER -->
+    <div class="dashboard-header">
+      <div class="header-left">
+        <h1>Dashboard</h1>
+        <p>Manage your documents efficiently</p>
+      </div>
+
+      <button class="logout-btn" (click)="logout()">
+        Logout
+      </button>
+    </div>
+
+    <!-- SEARCH + UPLOAD -->
+    <div class="dashboard-top">
+      <input
+        class="search-input"
+        [(ngModel)]="search"
+        placeholder="Search documents..."
+        (keyup)="searchDocs()"
+      />
+
+      <a routerLink="/upload" class="add-btn">
+        + Upload Document
+      </a>
+    </div>
+
+    <!-- DOCUMENTS -->
+    <div class="documents-grid">
+      <div class="doc-card" *ngFor="let doc of documents">
+
+        <h3>{{doc.title}}</h3>
+
+        <p class="category">{{doc.category}}</p>
+
+        <div class="tags">
+          <span class="tag" *ngFor="let tag of doc.tags">
+            {{tag}}
+          </span>
+        </div>
+
+        <p class="role">
+          Role:
+          <strong>
+            {{ isOwner(doc) ? 'Owner' : getPermissionRole(doc) }}
+          </strong>
+        </p>
+
+        <a
+          [href]="'http://localhost:5000/' + doc.currentFile"
+          target="_blank"
+          class="view-btn">
+          View
+        </a>
+
+        <!-- Upload New Version -->
+        <button
+          *ngIf="canEdit(doc)"
+          class="edit-btn"
+          (click)="selectDocument(doc)">
+          Upload New Version
+        </button>
+
+        <!-- Version History -->
+        <div class="version-history" *ngIf="doc.versions?.length">
+          <h5>Versions:</h5>
+          <ul>
+            <li *ngFor="let v of doc.versions">
+              {{ v.uploadedAt | date:'short' }}
+            </li>
+          </ul>
+        </div>
+
+        <!-- 🔥 Permission Button (ONLY FOR OWNER) -->
+        <div *ngIf="isOwner(doc)" class="permission-section">
+          <button class="permission-btn"
+                  (click)="openPermissionPanel(doc)">
+            Set Permission
+          </button>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PERMISSION PANEL -->
+    <div *ngIf="selectedDocForPermission" class="permission-box">
+
+      <h4>
+        Assign Permission for: {{selectedDocForPermission.title}}
+      </h4>
+
+      <input
+        type="text"
+        placeholder="Enter User ID"
+        [(ngModel)]="permissionUserId"
+        class="upload-input"
+      />
+
+      <select [(ngModel)]="selectedRole" class="upload-input">
+        <option value="viewer">Viewer</option>
+        <option value="editor">Editor</option>
+      </select>
+
+      <button class="upload-btn" (click)="assignPermission()">
+        Assign
+      </button>
+
+      <button class="logout-btn"
+              (click)="selectedDocForPermission = null">
+        Cancel
+      </button>
+
+    </div>
+
+    <!-- VERSION UPLOAD PANEL -->
+    <div *ngIf="selectedDoc" class="upload-version-box">
+
+      <h4>
+        Upload New Version for: {{selectedDoc.title}}
+      </h4>
+
+      <input type="file" (change)="onFileSelect($event)" />
+
+      <button class="upload-btn" (click)="uploadNewVersion()">
+        Upload
+      </button>
+
+      <button class="logout-btn" (click)="selectedDoc = null">
+        Cancel
+      </button>
+
+    </div>
+
+  </div>
+</div>

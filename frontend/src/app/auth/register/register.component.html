@@ -1,0 +1,50 @@
+<div class="login-wrapper">
+
+  <!-- App Title -->
+  <div class="login-header">
+    <h1>Document Management System</h1>
+    <p class="subtitle">Secure • Organized • Efficient</p>
+  </div>
+
+  <!-- Register Card -->
+  <div class="login-card">
+
+    <h2 class="login-title">Create Account</h2>
+    <p class="login-subtitle">Register to get started</p>
+
+    <div *ngIf="error" class="alert alert-danger text-center">
+      {{ error }}
+    </div>
+
+    <input
+      type="text"
+      class="login-input"
+      placeholder="Full Name"
+      [(ngModel)]="name"
+    />
+
+    <input
+      type="email"
+      class="login-input"
+      placeholder="Email"
+      [(ngModel)]="email"
+    />
+
+    <input
+      type="password"
+      class="login-input"
+      placeholder="Password"
+      [(ngModel)]="password"
+    />
+
+    <button class="login-btn" (click)="register()">
+      Register
+    </button>
+
+    <p class="login-footer">
+      Already have an account?
+      <a routerLink="/login">Sign in</a>
+    </p>
+
+  </div>
+</div>

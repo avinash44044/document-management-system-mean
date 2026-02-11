@@ -1,0 +1,57 @@
+<div class="upload-wrapper">
+
+  <!-- Header -->
+  <div class="upload-header">
+    <h1>Upload Document</h1>
+    <p>Add new files to your system</p>
+  </div>
+
+  <!-- Upload Card -->
+  <div class="upload-container">
+
+    <div class="form-group">
+      <label>Document Title</label>
+      <input
+        type="text"
+        [(ngModel)]="title"
+        placeholder="Enter document title"
+        class="upload-input"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Category</label>
+      <input
+        type="text"
+        [(ngModel)]="category"
+        placeholder="Enter category"
+        class="upload-input"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Tags</label>
+      <input
+        type="text"
+        [(ngModel)]="tags"
+        placeholder="Comma separated tags"
+        class="upload-input"
+      />
+    </div>
+
+    <div class="form-group">
+      <label>Select File</label>
+      <input
+        type="file"
+        (change)="onFileSelect($event)"
+        class="upload-file"
+      />
+    </div>
+
+    <button class="upload-btn" (click)="upload()">
+      Upload Document
+    </button>
+
+  </div>
+
+</div>
