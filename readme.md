@@ -1,4 +1,11 @@
 #  Document Management System (MEAN Stack)
+<img width="1918" height="968" alt="upload documents" src="https://github.com/user-attachments/assets/baef1d63-6e81-4976-aa2b-1ba0da7dc106" />
+<img width="1918" height="962" alt="set permission" src="https://github.com/user-attachments/assets/74d05733-b09d-4cd2-8037-bcfe68288605" />
+<img width="1918" height="922" alt="upload new version" src="https://github.com/user-attachments/assets/9aea6967-adf1-4cf2-9693-ac9c6acd4a2e" />
+<img width="1917" height="961" alt="dashboard" src="https://github.com/user-attachments/assets/930c16b2-2c1b-4904-b34e-457d51d3e723" />
+<img width="1916" height="968" alt="register" src="https://github.com/user-attachments/assets/e3932a5c-e58a-4e0d-a848-a43e738cd8db" />
+<img width="1918" height="1007" alt="login" src="https://github.com/user-attachments/assets/faea3e43-1272-43ec-94a3-1da13fb201db" />
+
 
 A full-stack Document Management System built using the MEAN stack (MongoDB, Express.js, Angular, Node.js).
 
